@@ -35,7 +35,7 @@ Future<void> init() async {
   // ── Cubits / Blocs ──
   sl.registerFactory(() => ThemeCubit());
   sl.registerFactory(() => SplashCubit());
-  sl.registerFactory(() => DashboardBloc());
+  sl.registerFactory(() => DashboardBloc(getDevicesStream: sl()));
   sl.registerFactory(() => LoginCubit(loginUseCase: sl()));
   sl.registerFactory(
     () => NetworkCubit(
