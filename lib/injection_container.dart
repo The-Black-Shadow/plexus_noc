@@ -4,6 +4,10 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:plexus_noc/core/network/cubit/network_cubit.dart';
 import 'package:plexus_noc/core/network/network_info.dart';
 import 'package:plexus_noc/core/theme/cubit/theme_cubit.dart';
+import 'package:plexus_noc/features/auth/data/datasources/auth_remote_datasource.dart';
+import 'package:plexus_noc/features/auth/data/repositories/auth_repository_impl.dart';
+import 'package:plexus_noc/features/auth/domain/repositories/auth_repository.dart';
+import 'package:plexus_noc/features/auth/domain/usecases/login_usecase.dart';
 import 'package:plexus_noc/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:plexus_noc/features/device_monitoring/domain/usecases/check_internet_connection.dart';
 import 'package:plexus_noc/features/device_monitoring/domain/usecases/listen_internet_connection.dart';
@@ -32,7 +36,7 @@ Future<void> init() async {
   sl.registerFactory(() => ThemeCubit());
   sl.registerFactory(() => SplashCubit());
   sl.registerFactory(() => DashboardBloc());
-  sl.registerFactory(() => LoginCubit());
+  sl.registerFactory(() => LoginCubit(loginUseCase: sl()));
   sl.registerFactory(
     () => NetworkCubit(
       checkInternetConnection: sl<CheckInternetConnectionUseCase>(),
@@ -41,4 +45,17 @@ Future<void> init() async {
   );
   sl.registerFactory(() => DeviceListBloc());
   sl.registerFactory(() => AlertCubit());
+
+  //usecases
+  sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepository>()));
+
+  //repositories
+  sl.registerLazySingleton<AuthRepository>(
+    () => AuthRepositoryImpl(sl<AuthRemoteDataSource>()),
+  );
+
+  //datasources
+  sl.registerLazySingleton<AuthRemoteDataSource>(
+    () => AuthRemoteDataSourceImpl(),
+  );
 }
