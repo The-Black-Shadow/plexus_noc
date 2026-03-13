@@ -32,7 +32,7 @@ Future<void> init() async {
   sl.registerFactory(() => ThemeCubit());
   sl.registerFactory(() => SplashCubit());
   sl.registerFactory(() => DashboardBloc());
-  sl.registerFactory(() => LoginCubit());
+  sl.registerFactory(() => LoginCubit(loginUseCase: sl()));
   sl.registerFactory(
     () => NetworkCubit(
       checkInternetConnection: sl<CheckInternetConnectionUseCase>(),
