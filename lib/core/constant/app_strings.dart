@@ -29,4 +29,11 @@ class AppStrings {
   static const String login = 'Login';
   static const String switchLightMode = 'Switch Light Mode';
   static const String switchDarkMode = 'Switch Dark Mode';
+
+  // Dashboard Page
+  static const String networkOverview = 'Network Overview';
+  static const String realTimeStatus =
+      'Real-time status of your infrastructure';
+  static const String totalDevices = 'Total Devices';
+  static const String activeAlerts = 'Active Alerts';
 }
