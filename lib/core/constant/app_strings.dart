@@ -19,4 +19,9 @@ class AppStrings {
 
   static const String dashboardTitle = 'Dashboard';
   static const String devicesNavLabel = 'Devices';
+
+  //login
+  static const String invalidEmailOrPassword = 'Invalid email or password';
+  static const String pleaseEnterYourEmail = 'Please enter your email';
+  static const String pleaseEnterYourPassword = 'Please enter your password';
 }
