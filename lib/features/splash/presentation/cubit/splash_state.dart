@@ -7,4 +7,8 @@ sealed class SplashState extends Equatable {
   List<Object> get props => [];
 }
 
-final class SplashInitial extends SplashState {}
+class SplashInitial extends SplashState {}
+
+class SplashLoading extends SplashState {}
+
+class SplashCompleted extends SplashState {}

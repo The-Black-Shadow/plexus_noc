@@ -3,6 +3,7 @@ class AppStrings {
 
   static const String envFileName = '.env';
   static const String plexusNocAppTitle = 'Plexus NOC';
+  static const String plexusNocAppSubtitle = 'Network Operations Center';
 
   static const String nocDashboardTitle = 'NOC Dashboard';
   static const String deviceListTitle = 'Device List';
