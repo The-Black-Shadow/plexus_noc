@@ -36,4 +36,13 @@ class AppStrings {
       'Real-time status of your infrastructure';
   static const String totalDevices = 'Total Devices';
   static const String activeAlerts = 'Active Alerts';
+
+  // Notification Service
+  static const String notificationChannelId = 'noc_critical_alerts';
+  static const String notificationChannelName = 'Critical Alerts';
+  static const String notificationChannelDescription =
+      'Notifications for offline devices and high CPU usage';
+  static const String notificationTicker = 'NOC Alert';
+  static const String notificationAppIcon = '@mipmap/ic_launcher';
+  static const String notificationTitle = '⚠️ CRITICAL NOC ALERT';
 }
