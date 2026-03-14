@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plexus_noc/core/constant/app_colors.dart';
 import 'package:plexus_noc/core/extensions/responsive_extensions.dart';
 
 class DashboardCard extends StatelessWidget {
@@ -24,7 +25,6 @@ class DashboardCard extends StatelessWidget {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    // Staggered entrance for each card based on its index
     final cardAnimation = CurvedAnimation(
       parent: animationController,
       curve: Interval(
@@ -38,55 +38,57 @@ class DashboardCard extends StatelessWidget {
       scale: Tween<double>(begin: 0.9, end: 1.0).animate(cardAnimation),
       child: FadeTransition(
         opacity: cardAnimation,
-        child: Card(
-          elevation: isDark ? 0 : 4,
-          shadowColor: color.withValues(alpha: 0.2), // Themed shadow
-          child: Padding(
-            padding: EdgeInsets.all(16.0.responsive(context)),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                // Glowing Icon Header
-                Container(
-                  padding: EdgeInsets.all(12.responsive(context)),
-                  decoration: BoxDecoration(
-                    color: color.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(16.responsive(context)),
-                  ),
-                  child: Icon(icon, color: color, size: 32.responsive(context)),
-                ),
-                SizedBox(height: 16.responsive(context)),
-                // Number Counter Widget
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    TweenAnimationBuilder<int>(
-                      tween: IntTween(begin: 0, end: value),
-                      duration: const Duration(seconds: 1),
-                      curve: Curves.easeOutCubic,
-                      builder: (context, currentValue, child) {
-                        return Text(
-                          currentValue.toString(),
-                          style: theme.textTheme.headlineMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: theme.colorScheme.onSurface,
-                          ),
-                        );
-                      },
-                    ),
-                    SizedBox(height: 4.responsive(context)),
-                    Text(
-                      title,
-                      style: theme.textTheme.titleSmall?.copyWith(
-                        color: theme.colorScheme.onSurfaceVariant,
-                        fontWeight: FontWeight.w500,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
+        child: Container(
+          decoration: BoxDecoration(
+            color: isDark
+                ? AppColors.surfaceDark
+                : Colors.white,
+            borderRadius: BorderRadius.circular(16.responsive(context)),
+            border: Border.all(
+              color: isDark ? color.withValues(alpha: 0.4) : color.withValues(alpha: 0.2),
+              width: 1.5,
             ),
+          ),
+          padding: EdgeInsets.all(14.responsive(context)),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              // Icon in a rounded container
+              Container(
+                padding: EdgeInsets.all(8.responsive(context)),
+                decoration: BoxDecoration(
+                  color: color.withValues(alpha: isDark ? 0.15 : 0.1),
+                  borderRadius: BorderRadius.circular(10.responsive(context)),
+                ),
+                child: Icon(icon, color: color, size: 24.responsive(context)),
+              ),
+              const Spacer(),
+              // Animated counter
+              TweenAnimationBuilder<int>(
+                tween: IntTween(begin: 0, end: value),
+                duration: const Duration(seconds: 1),
+                curve: Curves.easeOutCubic,
+                builder: (context, currentValue, child) {
+                  return Text(
+                    currentValue.toString(),
+                    style: theme.textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: theme.colorScheme.onSurface,
+                    ),
+                  );
+                },
+              ),
+              SizedBox(height: 2.responsive(context)),
+              // Subtitle
+              Text(
+                title,
+                style: theme.textTheme.bodySmall?.copyWith(
+                  color: theme.colorScheme.onSurfaceVariant,
+                  fontWeight: FontWeight.w500,
+                ),
+              ),
+            ],
           ),
         ),
       ),
