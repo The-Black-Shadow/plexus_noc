@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:plexus_noc/core/network/cubit/network_cubit.dart';
 import 'package:plexus_noc/core/network/network_info.dart';
+import 'package:plexus_noc/core/services/local_notification_service.dart';
 import 'package:plexus_noc/core/theme/cubit/theme_cubit.dart';
 import 'package:plexus_noc/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:plexus_noc/features/auth/data/repositories/auth_repository_impl.dart';
@@ -17,6 +18,7 @@ import 'package:plexus_noc/features/device_monitoring/data/datasources/mock_devi
 import 'package:plexus_noc/features/device_monitoring/data/repositories/device_repository_impl.dart';
 import 'package:plexus_noc/features/device_monitoring/domain/repositories/device_repository.dart';
 import 'package:plexus_noc/features/device_monitoring/domain/usecases/check_internet_connection.dart';
+import 'package:plexus_noc/features/device_monitoring/domain/usecases/get_alerts_stream.dart';
 import 'package:plexus_noc/features/device_monitoring/domain/usecases/get_devices_stream.dart';
 import 'package:plexus_noc/features/device_monitoring/domain/usecases/listen_internet_connection.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/alert/alert_cubit.dart';
@@ -52,11 +54,15 @@ Future<void> init() async {
       listenInternetConnection: sl<ListenInternetConnectionUseCase>(),
     ),
   );
-  sl.registerFactory(() => DeviceListBloc());
-  sl.registerFactory(() => AlertCubit());
-
+  sl.registerFactory(
+    () => DeviceListBloc(getDevicesStream: sl(), checkInternetConnection: sl()),
+  );
+  sl.registerFactory(
+    () => AlertCubit(getAlertsStream: sl(), notificationService: sl()),
+  );
   //usecases
   sl.registerLazySingleton(() => LoginUseCase(sl<AuthRepository>()));
+  sl.registerLazySingleton(() => GetAlertsStreamUseCase(sl()));
 
   //repositories
   sl.registerLazySingleton<AuthRepository>(
@@ -81,7 +87,10 @@ Future<void> init() async {
   sl.registerLazySingleton<DeviceLocalDataSource>(
     () => DeviceLocalDataSourceImpl(cacheBox: sl()),
   );
-
+  //services
+  final notificationService = LocalNotificationService();
+  await notificationService.init();
+  sl.registerLazySingleton(() => notificationService);
   // Initialize Hive and open the box before registering it
   await Hive.initFlutter();
   final cacheBox = await Hive.openBox('device_cache_box');
