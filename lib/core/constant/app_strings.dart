@@ -45,4 +45,16 @@ class AppStrings {
   static const String notificationTicker = 'NOC Alert';
   static const String notificationAppIcon = '@mipmap/ic_launcher';
   static const String notificationTitle = '⚠️ CRITICAL NOC ALERT';
+
+  // Device Monitoring Screen
+  static const String searchDevicesHint = 'Search devices by name or IP...';
+  static const String filterAll = 'All';
+  static const String noDevicesFound = 'No devices found.';
+  static const String onlineStatus = 'ONLINE';
+  static const String offlineStatus = 'OFFLINE';
+  static const String deviceDetailsRoute = 'device_details';
+
+  // Global Alert Dialog
+  static const String criticalAlertTitle = 'Critical Alert';
+  static const String alertDismiss = 'Okay';
 }
