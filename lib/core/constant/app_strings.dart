@@ -92,4 +92,6 @@ class AppStrings {
   static const String settingsDarkMode = 'Dark Mode';
   static const String settingsDarkModeSubtitle =
       'Toggle between light and dark themes';
+  static const String settingsAccount = 'Account';
+  static const String settingsLogout = 'Logout';
 }
