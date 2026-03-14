@@ -85,4 +85,11 @@ class AppStrings {
   static const String alertTypeDeviceOffline = 'Device Offline';
   static const String alertTypeHighCpu = 'High CPU Usage';
   static const String alertTypeNetworkLatency = 'Network Latency';
+
+  // Settings Feature
+  static const String settingsTitle = 'Settings';
+  static const String settingsAppearance = 'Appearance';
+  static const String settingsDarkMode = 'Dark Mode';
+  static const String settingsDarkModeSubtitle =
+      'Toggle between light and dark themes';
 }

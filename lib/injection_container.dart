@@ -4,7 +4,7 @@ import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:plexus_noc/core/network/cubit/network_cubit.dart';
 import 'package:plexus_noc/core/network/network_info.dart';
 import 'package:plexus_noc/core/services/local_notification_service.dart';
-import 'package:plexus_noc/core/theme/cubit/theme_cubit.dart';
+import 'package:plexus_noc/features/settings/presentation/cubits/theme/theme_cubit.dart';
 import 'package:plexus_noc/features/auth/data/datasources/auth_remote_datasource.dart';
 import 'package:plexus_noc/features/auth/data/repositories/auth_repository_impl.dart';
 import 'package:plexus_noc/features/auth/domain/repositories/auth_repository.dart';
@@ -44,7 +44,7 @@ Future<void> init() async {
   sl.registerLazySingleton(() => GetDevicesStreamUseCase(sl()));
 
   // ── Cubits / Blocs ──
-  sl.registerFactory(() => ThemeCubit());
+  sl.registerLazySingleton(() => ThemeCubit());
   sl.registerFactory(() => SplashCubit());
   sl.registerFactory(() => DashboardBloc(getDevicesStream: sl()));
   sl.registerFactory(() => LoginCubit(loginUseCase: sl()));
