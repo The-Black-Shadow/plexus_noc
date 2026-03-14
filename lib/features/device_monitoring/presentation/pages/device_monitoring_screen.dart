@@ -59,14 +59,13 @@ class _DeviceListBodyState extends State<_DeviceListBody> {
   Widget build(BuildContext context) {
     return BlocBuilder<DeviceListBloc, DeviceListState>(
       builder: (context, state) => switch (state) {
-        DeviceListLoading() =>
-          const Center(child: CircularProgressIndicator()),
+        DeviceListLoading() => const Center(child: CircularProgressIndicator()),
         DeviceListError(:final message) => Center(
-            child: Text(
-              'Error: $message',
-              style: TextStyle(color: Theme.of(context).colorScheme.error),
-            ),
+          child: Text(
+            'Error: $message',
+            style: TextStyle(color: Theme.of(context).colorScheme.error),
           ),
+        ),
         DeviceListLoaded() => _buildDeviceList(context, state),
       },
     );
@@ -77,8 +76,9 @@ class _DeviceListBodyState extends State<_DeviceListBody> {
       return const Center(child: Text(AppStrings.noDevicesFound));
     }
 
-    final itemCount =
-        state.hasReachedMax ? state.devices.length : state.devices.length + 1;
+    final itemCount = state.hasReachedMax
+        ? state.devices.length
+        : state.devices.length + 1;
 
     return RefreshIndicator(
       onRefresh: () async =>

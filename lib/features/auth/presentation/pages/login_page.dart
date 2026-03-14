@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:plexus_noc/core/constant/app_strings.dart';
 import 'package:plexus_noc/core/extensions/responsive_extensions.dart';
-import 'package:plexus_noc/core/theme/cubit/theme_cubit.dart';
+import 'package:plexus_noc/features/settings/presentation/cubits/theme/theme_cubit.dart';
 import 'package:plexus_noc/features/auth/presentation/cubit/login_cubit.dart';
 import 'package:plexus_noc/features/auth/presentation/widgets/auth_text_field.dart';
 
