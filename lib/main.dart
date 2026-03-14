@@ -9,7 +9,6 @@ import 'package:plexus_noc/core/theme/cubit/theme_cubit.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/alert/alert_cubit.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/dashboard/dashboard_bloc.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/device_list/device_list_bloc.dart';
-import 'package:plexus_noc/features/device_monitoring/presentation/widgets/global_alert_wrapper.dart';
 import 'injection_container.dart' as di;
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,10 +43,7 @@ class MyApp extends StatelessWidget {
             routerConfig: appRouter,
             builder: (context, child) {
               return GlobalNetworkWrapper(
-                child: GlobalAlertWrapper(
-                  navigatorKey: rootNavigatorKey,
-                  child: child!,
-                ),
+                child: child!,
               );
             },
           );

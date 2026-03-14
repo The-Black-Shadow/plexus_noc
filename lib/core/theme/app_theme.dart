@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:plexus_noc/core/constant/app_colors.dart';
 
 class AppTheme {
   AppTheme._();
@@ -6,14 +7,14 @@ class AppTheme {
   static ThemeData get lightTheme {
     return ThemeData.light(useMaterial3: true).copyWith(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xFF2563EB), 
+        seedColor: AppColors.primaryLight,
         brightness: Brightness.light,
       ).copyWith(
-        surface: const Color(0xFFF8FAFC), 
-        error: const Color(0xFFEF4444), 
-        tertiary: const Color(0xFF10B981), 
+        surface: AppColors.surfaceLight,
+        error: AppColors.errorLight,
+        tertiary: AppColors.successLight,
       ),
-      scaffoldBackgroundColor: const Color(0xFFF1F5F9), 
+      scaffoldBackgroundColor: AppColors.scaffoldLight,
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         elevation: 0,
@@ -33,27 +34,27 @@ class AppTheme {
   static ThemeData get darkTheme {
     return ThemeData.dark(useMaterial3: true).copyWith(
       colorScheme: ColorScheme.fromSeed(
-        seedColor: const Color(0xFF3B82F6), 
+        seedColor: AppColors.primaryDark,
         brightness: Brightness.dark,
       ).copyWith(
-        surface: const Color(0xFF1E293B), 
-        error: const Color(0xFFF87171), 
-        tertiary: const Color(0xFF34D399), 
+        surface: AppColors.surfaceDark,
+        error: AppColors.errorDark,
+        tertiary: AppColors.successDark,
       ),
-      scaffoldBackgroundColor: const Color(0xFF0F172A), 
+      scaffoldBackgroundColor: AppColors.scaffoldDark,
       appBarTheme: const AppBarTheme(
         centerTitle: true,
         elevation: 0,
         backgroundColor: Colors.transparent,
         surfaceTintColor: Colors.transparent,
       ),
-      cardColor: const Color(0xFF1E293B), 
+      cardColor: AppColors.surfaceDark,
       cardTheme: CardThemeData(
         elevation: 0,
-        color: const Color(0xFF1E293B),
+        color: AppColors.surfaceDark,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(24),
-          side: const BorderSide(color: Color(0xFF334155), width: 1), 
+          side: BorderSide(color: AppColors.cardBorderDark, width: 1),
         ),
       ),
     );

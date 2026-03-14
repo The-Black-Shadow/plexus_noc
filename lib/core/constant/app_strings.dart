@@ -29,4 +29,43 @@ class AppStrings {
   static const String login = 'Login';
   static const String switchLightMode = 'Switch Light Mode';
   static const String switchDarkMode = 'Switch Dark Mode';
+
+  // Dashboard Page
+  static const String networkOverview = 'Network Overview';
+  static const String realTimeStatus =
+      'Real-time status of your infrastructure';
+  static const String totalDevices = 'Total Devices';
+  static const String activeAlerts = 'Active Alerts';
+
+  // Notification Service
+  static const String notificationChannelId = 'noc_critical_alerts';
+  static const String notificationChannelName = 'Critical Alerts';
+  static const String notificationChannelDescription =
+      'Notifications for offline devices and high CPU usage';
+  static const String notificationTicker = 'NOC Alert';
+  static const String notificationAppIcon = '@mipmap/ic_launcher';
+  static const String notificationTitle = '⚠️ CRITICAL NOC ALERT';
+
+  // Device Monitoring Screen
+  static const String searchDevicesHint = 'Search devices by name or IP...';
+  static const String filterAll = 'All';
+  static const String noDevicesFound = 'No devices found.';
+  static const String onlineStatus = 'ONLINE';
+  static const String offlineStatus = 'OFFLINE';
+  static const String deviceDetailsRoute = 'device_details';
+
+  // Global Alert Dialog
+  static const String criticalAlertTitle = 'Critical Alert';
+  static const String alertDismiss = 'Okay';
+
+  // Device Details Page
+  static const String deviceDetailsTitle = 'Device Details';
+  static const String ipAddressLabel = 'IP Address';
+  static const String locationLabel = 'Location';
+  static const String lastPingLabel = 'Last Ping';
+  static const String cpuUsageLabel = 'CPU Usage';
+  static const String memoryUsageLabel = 'Memory Usage';
+
+  //Map
+  static const String mapDataUnavailable = 'Map data unavailable.';
 }
