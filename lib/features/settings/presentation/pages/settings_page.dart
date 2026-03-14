@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
 import 'package:plexus_noc/core/constant/app_strings.dart';
 import 'package:plexus_noc/core/extensions/responsive_extensions.dart';
 import 'package:plexus_noc/features/settings/presentation/cubits/theme/theme_cubit.dart';
@@ -36,6 +37,21 @@ class SettingsPage extends StatelessWidget {
             },
           ),
           const Divider(),
+          _buildSectionHeader(context, AppStrings.settingsAccount),
+          ListTile(
+            leading: Icon(Icons.logout_rounded, color: theme.colorScheme.error),
+            title: Text(
+              AppStrings.settingsLogout,
+              style: TextStyle(
+                color: theme.colorScheme.error,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            onTap: () {
+              // Redirect to login page
+              context.goNamed('login');
+            },
+          ),
         ],
       ),
     );

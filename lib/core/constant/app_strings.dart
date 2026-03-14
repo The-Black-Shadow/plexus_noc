@@ -29,6 +29,8 @@ class AppStrings {
   static const String login = 'Login';
   static const String switchLightMode = 'Switch Light Mode';
   static const String switchDarkMode = 'Switch Dark Mode';
+  static const String signInToAccessTheCommandCenter =
+      'Sign in to access the command center';
 
   // Dashboard Page
   static const String networkOverview = 'Network Overview';
@@ -92,4 +94,6 @@ class AppStrings {
   static const String settingsDarkMode = 'Dark Mode';
   static const String settingsDarkModeSubtitle =
       'Toggle between light and dark themes';
+  static const String settingsAccount = 'Account';
+  static const String settingsLogout = 'Logout';
 }
