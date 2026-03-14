@@ -625,9 +625,11 @@ cd plexus_noc
 
 # Ensure you have your .env file created first!
 
-flutter pub get
+fvm use
 
-flutter run
+fvm flutter pub get
+
+fvm flutter run
 ```
 
 ---
