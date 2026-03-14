@@ -5,7 +5,7 @@ import 'package:plexus_noc/core/navigation/app_router.dart';
 import 'package:plexus_noc/core/network/cubit/network_cubit.dart';
 import 'package:plexus_noc/core/network/global_network_wrapper.dart';
 import 'package:plexus_noc/core/theme/app_theme.dart';
-import 'package:plexus_noc/core/theme/cubit/theme_cubit.dart';
+import 'package:plexus_noc/features/settings/presentation/cubits/theme/theme_cubit.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/alert/alert_cubit.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/dashboard/dashboard_bloc.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/device_list/device_list_bloc.dart';

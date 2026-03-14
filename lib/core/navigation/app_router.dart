@@ -10,6 +10,7 @@ import 'package:plexus_noc/features/device_monitoring/presentation/pages/device_
 import 'package:plexus_noc/features/device_monitoring/presentation/pages/map_page.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/pages/notifications_page.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/widgets/global_alert_wrapper.dart';
+import 'package:plexus_noc/features/settings/presentation/pages/settings_page.dart';
 import 'package:plexus_noc/features/splash/presentation/cubit/splash_cubit.dart';
 import 'package:plexus_noc/features/splash/presentation/pages/splash_page.dart';
 import 'package:plexus_noc/injection_container.dart' as di;
@@ -25,6 +26,8 @@ final GlobalKey<NavigatorState> _shellNavigatorListKey =
     GlobalKey<NavigatorState>(debugLabel: 'shellList');
 final GlobalKey<NavigatorState> _shellNavigatorMapKey =
     GlobalKey<NavigatorState>(debugLabel: 'shellMap');
+final GlobalKey<NavigatorState> _shellNavigatorSettingsKey =
+    GlobalKey<NavigatorState>(debugLabel: 'shellSettings');
 
 final GoRouter appRouter = GoRouter(
   navigatorKey: rootNavigatorKey,
@@ -56,6 +59,8 @@ final GoRouter appRouter = GoRouter(
       parentNavigatorKey: rootNavigatorKey,
       builder: (context, state) => const NotificationsPage(),
     ),
+
+
 
     StatefulShellRoute.indexedStack(
       builder: (context, state, navigationShell) {
@@ -113,6 +118,18 @@ final GoRouter appRouter = GoRouter(
               name: 'map',
               builder: (context, state) =>
                   const MapPage(), 
+            ),
+          ],
+        ),
+
+        // --- TAB 4: SETTINGS BRANCH ---
+        StatefulShellBranch(
+          navigatorKey: _shellNavigatorSettingsKey,
+          routes: [
+            GoRoute(
+              path: '/settings',
+              name: 'settings',
+              builder: (context, state) => const SettingsPage(),
             ),
           ],
         ),
