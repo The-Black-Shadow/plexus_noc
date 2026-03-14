@@ -20,8 +20,13 @@ class _NotificationsPageState extends State<NotificationsPage> {
   @override
   void initState() {
     super.initState();
-    // Mark all notifications as read when entering the page.
-    context.read<AlertCubit>().markAllRead();
+    // Mark all notifications as read when entering the page,
+    // after the initial frame to avoid synchronous rebuilds during navigation animation.
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        context.read<AlertCubit>().markAllRead();
+      }
+    });
 
     _scrollController.addListener(_onScroll);
     _loadInitialPage();
