@@ -127,6 +127,8 @@ class MockDeviceDataSource implements DeviceRemoteDataSource {
           _alertStreamController.add(
             AlertEntity(
               deviceId: device.id,
+              deviceName: device.name,
+              alertType: 'Device Offline',
               message: '${device.name} is offline',
               timestamp: DateTime.now(),
             ),

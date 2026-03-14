@@ -35,4 +35,17 @@ class AppColors {
 
   // ── Card border (dark mode) ───────────────────────────────
   static const Color cardBorderDark = Color(0xFF334155);
+
+  // ── Dashboard Card Accents ────────────────────────────────
+  static const Color accentBlue = Color(0xFF3B82F6);
+  static const Color accentGreen = Color(0xFF22C55E);
+  static const Color accentRed = Color(0xFFEF4444);
+  static const Color accentOrange = Color(0xFFF59E0B);
+
+  // ── Donut Chart ───────────────────────────────────────────
+  static const Color donutOnline = Color(0xFF22C55E);
+  static const Color donutOffline = Color(0xFFEF4444);
+
+  // ── Notification Badge ────────────────────────────────────
+  static const Color badgeRed = Color(0xFFEF4444);
 }
