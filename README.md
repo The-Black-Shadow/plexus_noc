@@ -110,7 +110,8 @@ Features:
 - Offline indicator
 - Clickable markers
 
-**(Selected Filtered devices from Device List screen shows in the MAP)**
+**(Selected Filtered devices from **Device List** screen shows in the **MAP**)**
+_Example: If you filter devices by "Online" from **Device List** screen, then only online devices will show in the **MAP** screen_
 
 Clicking marker shows:
 
