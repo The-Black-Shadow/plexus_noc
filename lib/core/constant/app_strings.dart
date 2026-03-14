@@ -65,4 +65,7 @@ class AppStrings {
   static const String lastPingLabel = 'Last Ping';
   static const String cpuUsageLabel = 'CPU Usage';
   static const String memoryUsageLabel = 'Memory Usage';
+
+  //Map
+  static const String mapDataUnavailable = 'Map data unavailable.';
 }
