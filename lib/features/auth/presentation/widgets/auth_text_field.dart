@@ -37,7 +37,6 @@ class AuthTextField extends StatelessWidget {
         prefixIcon: Icon(prefixIcon),
         suffixIcon: suffixIcon,
         errorText: errorText, // Error handled explicitly from the Cubit now
-        border: OutlineInputBorder(borderRadius: BorderRadius.circular(12)),
       ),
     );
   }
