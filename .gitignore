@@ -45,9 +45,9 @@ app.*.map.json
 /android/app/release
 
 #env
-.env
 
 # FVM Version Cache
 .fvm/
 
 analyze.txt
+node_modules
