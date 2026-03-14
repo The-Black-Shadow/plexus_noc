@@ -72,7 +72,7 @@ class _LoginPageState extends State<LoginPage> {
                         size: 80.responsive(context),
                         color: theme.colorScheme.primary,
                       ),
-                      SizedBox(height: 16.responsive(context)),
+                      SizedBox(height: 26.responsive(context)),
                       Text(
                         AppStrings.plexusNocAppTitle,
                         textAlign: TextAlign.center,
@@ -209,6 +209,7 @@ class _LoginPageState extends State<LoginPage> {
                           ),
                         ),
                       ),
+                      SizedBox(height: 56.responsive(context)),
                     ],
                   ),
                 ),
