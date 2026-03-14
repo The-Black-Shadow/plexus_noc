@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plexus_noc/core/constant/app_colors.dart';
 import 'package:plexus_noc/core/constant/app_strings.dart';
 import 'package:plexus_noc/core/extensions/responsive_extensions.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/dashboard/dashboard_bloc.dart';
@@ -125,7 +126,10 @@ class _DashboardPageState extends State<DashboardPage>
                             title: AppStrings.activeAlerts,
                             value: state.alerts,
                             icon: Icons.warning_amber_rounded,
-                            color: Colors.orangeAccent,
+                            color:
+                                Theme.of(context).brightness == Brightness.dark
+                                ? AppColors.warningDark
+                                : AppColors.warningLight,
                             delayIndex: 3,
                             animationController: _entranceController,
                           ),

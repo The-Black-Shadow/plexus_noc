@@ -24,6 +24,8 @@ class AppColors {
 
   // ── Critical / Alert ──────────────────────────────────────
   static const Color criticalRed = Color(0xFFD32F2F);
+  static const Color warningLight = Color(0xFFFF9800);
+  static const Color warningDark = Color(0xFFFFB74D);
 
   // ── Card border (dark mode) ───────────────────────────────
   static const Color cardBorderDark = Color(0xFF334155);

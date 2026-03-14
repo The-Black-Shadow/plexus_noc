@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:plexus_noc/core/constant/app_strings.dart';
+import 'package:plexus_noc/core/extensions/responsive_extensions.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/alert/alert_cubit.dart';
 
 class GlobalAlertWrapper extends StatefulWidget {
@@ -31,6 +33,8 @@ class _GlobalAlertWrapperState extends State<GlobalAlertWrapper> {
 
     _isDialogShowing = true;
 
+    final colorScheme = Theme.of(context).colorScheme;
+
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -39,21 +43,27 @@ class _GlobalAlertWrapperState extends State<GlobalAlertWrapper> {
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(16),
           ),
-          title: const Row(
+          title: Row(
             children: [
-              Icon(Icons.warning_rounded, color: Colors.redAccent, size: 32),
-              SizedBox(width: 12),
-              Text('Critical Alert', style: TextStyle(color: Colors.redAccent)),
+              Icon(
+                Icons.warning_rounded,
+                color: colorScheme.error,
+                size: 32.responsive(context),
+              ),
+              const SizedBox(width: 12),
+              Text(
+                AppStrings.criticalAlertTitle,
+                style: TextStyle(color: colorScheme.error),
+              ),
             ],
           ),
-
           content: ValueListenableBuilder<String>(
             valueListenable: _alertMessageNotifier,
             builder: (context, currentMessage, child) {
               return Text(
                 currentMessage,
-                style: const TextStyle(
-                  fontSize: 16,
+                style: TextStyle(
+                  fontSize: 16.responsive(context),
                   fontWeight: FontWeight.w500,
                 ),
               );
@@ -66,7 +76,7 @@ class _GlobalAlertWrapperState extends State<GlobalAlertWrapper> {
                 Navigator.of(dialogContext, rootNavigator: true).pop();
               },
               child: const Text(
-                'Okay',
+                AppStrings.alertDismiss,
                 style: TextStyle(fontWeight: FontWeight.bold),
               ),
             ),
