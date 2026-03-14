@@ -23,6 +23,7 @@ import 'package:plexus_noc/features/device_monitoring/domain/usecases/get_device
 import 'package:plexus_noc/features/device_monitoring/domain/usecases/listen_internet_connection.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/alert/alert_cubit.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/dashboard/dashboard_bloc.dart';
+import 'package:plexus_noc/features/device_monitoring/presentation/bloc/device_details/device_details_bloc.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/bloc/device_list/device_list_bloc.dart';
 import 'package:plexus_noc/features/splash/presentation/cubit/splash_cubit.dart';
 
@@ -57,6 +58,8 @@ Future<void> init() async {
   sl.registerFactory(
     () => DeviceListBloc(getDevicesStream: sl(), checkInternetConnection: sl()),
   );
+  sl.registerFactory(() => DeviceDetailsBloc(getDevicesStream: sl()));
+
   sl.registerFactory(
     () => AlertCubit(getAlertsStream: sl(), notificationService: sl()),
   );
