@@ -17,28 +17,75 @@ class DeviceDetailsPage extends StatelessWidget {
     return BlocProvider(
       create: (_) =>
           di.sl<DeviceDetailsBloc>()..add(StartDeviceDetailsStream(deviceId)),
-      child: Scaffold(
-        appBar: AppBar(title: const Text(AppStrings.deviceDetailsTitle)),
-        body: const _DeviceDetailsBody(),
-      ),
+      child: const _DeviceDetailsScaffold(),
     );
   }
 }
 
-class _DeviceDetailsBody extends StatelessWidget {
-  const _DeviceDetailsBody();
+class _DeviceDetailsScaffold extends StatelessWidget {
+  const _DeviceDetailsScaffold();
 
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DeviceDetailsBloc, DeviceDetailsState>(
-      builder: (context, state) => switch (state) {
-        DeviceDetailsLoading() =>
-          const Center(child: CircularProgressIndicator()),
-        DeviceDetailsError(:final message) =>
-          Center(child: Text(message)),
-        DeviceDetailsLoaded() => _DeviceDetailsContent(state: state),
+      builder: (context, state) {
+        return Scaffold(
+          appBar: _buildAppBar(context, state),
+          body: _buildBody(state),
+        );
       },
     );
+  }
+
+  PreferredSizeWidget _buildAppBar(BuildContext context, DeviceDetailsState state) {
+    if (state is DeviceDetailsLoaded) {
+      final device = state.device;
+      final statusColor = device.isOnline ? AppColors.accentGreen : AppColors.accentRed;
+      
+      return AppBar(
+        titleSpacing: 0,
+        title: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              device.name,
+              style: const TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 20,
+              ),
+            ),
+            const SizedBox(height: 4),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 2),
+              decoration: BoxDecoration(
+                color: statusColor.withValues(alpha: 0.15),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                device.isOnline ? AppStrings.onlineStatus : AppStrings.offlineStatus,
+                style: TextStyle(
+                  color: statusColor,
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ),
+          ],
+        ),
+      );
+    }
+    
+    return AppBar(title: const Text(AppStrings.deviceDetailsTitle));
+  }
+
+  Widget _buildBody(DeviceDetailsState state) {
+    return switch (state) {
+      DeviceDetailsLoading() =>
+        const Center(child: CircularProgressIndicator()),
+      DeviceDetailsError(:final message) => Center(child: Text(message)),
+      DeviceDetailsLoaded() => _DeviceDetailsContent(state: state),
+    };
   }
 }
 
