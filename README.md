@@ -110,6 +110,8 @@ Features:
 - Offline indicator
 - Clickable markers
 
+**(Selected Filtered devices from Device List screen shows in the MAP)**
+
 Clicking marker shows:
 
 - Device name
@@ -168,8 +170,6 @@ Pull-to-refresh added as backup.
 Local notification system triggers for:
 
 - Offline devices
-- CPU threshold exceeded
-- Memory threshold exceeded
 
 Notifications work globally across app.
 
@@ -579,25 +579,11 @@ Because it provides:
 
 ---
 
-# Future Improvements
-
-Possible improvements:
-
-- Real backend integration
-- WebSocket updates
-- Firebase push notifications
-- Device analytics history
-- Advanced alert rules
-- Export reports
-- Admin roles
-- Device grouping
-
----
-
 # Screenshots
 
 <p align="center">
-  <b>Light Theme</b><br>
+  <b>Light Theme</b><br><br>
+
   <img src="screenshots/login_white.png" width="16%">
   <img src="screenshots/dashboard_white.jpg" width="16%">
   <img src="screenshots/device_monitoring_white.jpg" width="16%">
@@ -607,7 +593,7 @@ Possible improvements:
 </p>
 
 <p align="center">
-  <b>Dark Theme</b><br>
+  <b>Dark Theme</b><br><br>
   <img src="screenshots/login_black.png" width="16%">
   <img src="screenshots/dashboard_black.jpg" width="16%">
   <img src="screenshots/device_monitoring_black.jpg" width="16%">

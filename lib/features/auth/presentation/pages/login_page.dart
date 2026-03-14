@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:plexus_noc/core/constant/app_assets.dart';
 import 'package:plexus_noc/core/constant/app_colors.dart';
 import 'package:plexus_noc/core/constant/app_strings.dart';
 import 'package:plexus_noc/core/extensions/responsive_extensions.dart';
@@ -67,10 +68,10 @@ class _LoginPageState extends State<LoginPage> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     mainAxisSize: MainAxisSize.min,
                     children: [
-                      Icon(
-                        Icons.router_outlined,
-                        size: 80.responsive(context),
-                        color: theme.colorScheme.primary,
+                      Image.asset(
+                        AppAssets.appLogo,
+                        height: 80.responsive(context),
+                        width: 80.responsive(context),
                       ),
                       SizedBox(height: 26.responsive(context)),
                       Text(

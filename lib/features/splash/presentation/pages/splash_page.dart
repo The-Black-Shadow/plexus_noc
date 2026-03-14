@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:plexus_noc/core/constant/app_assets.dart';
 import 'package:plexus_noc/core/constant/app_strings.dart';
 import 'package:plexus_noc/core/extensions/responsive_extensions.dart';
 import 'package:plexus_noc/features/splash/presentation/cubit/splash_cubit.dart';
@@ -35,10 +36,10 @@ class _SplashPageState extends State<SplashPage> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(
-                Icons.router_outlined,
-                size: 100.responsive(context),
-                color: theme.colorScheme.primary,
+              Image.asset(
+                AppAssets.appLogo,
+                height: 100.responsive(context),
+                width: 100.responsive(context),
               ),
               SizedBox(height: 24.responsive(context)),
               Text(
