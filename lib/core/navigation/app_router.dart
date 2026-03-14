@@ -8,6 +8,7 @@ import 'package:plexus_noc/features/device_monitoring/presentation/pages/dashboa
 import 'package:plexus_noc/features/device_monitoring/presentation/pages/device_details_page.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/pages/device_monitoring_screen.dart';
 import 'package:plexus_noc/features/device_monitoring/presentation/pages/map_page.dart';
+import 'package:plexus_noc/features/device_monitoring/presentation/widgets/global_alert_wrapper.dart';
 import 'package:plexus_noc/features/splash/presentation/cubit/splash_cubit.dart';
 import 'package:plexus_noc/features/splash/presentation/pages/splash_page.dart';
 import 'package:plexus_noc/injection_container.dart' as di;
@@ -61,7 +62,10 @@ final GoRouter appRouter = GoRouter(
             GoRoute(
               path: '/dashboard',
               name: 'dashboard', 
-              builder: (context, state) => const DashboardPage(),
+              builder: (context, state) => GlobalAlertWrapper(
+                navigatorKey: rootNavigatorKey,
+                child: const DashboardPage(),
+              ),
             ),
           ],
         ),
