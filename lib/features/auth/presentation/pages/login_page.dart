@@ -57,49 +57,48 @@ class _LoginPageState extends State<LoginPage> {
         child: SafeArea(
           child: Stack(
             children: [
-              // ── Main Content ──
               Center(
                 child: SingleChildScrollView(
-                  padding: EdgeInsets.all(24.0.responsive(context)),
-                  child: Card(
-                    elevation: 8,
-                    shadowColor: Colors.black26,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(24.responsive(context)),
-                    ),
-                    color: isDark ? const Color(0xFF1E293B) : Colors.white,
-                    child: Padding(
-                      padding: EdgeInsets.all(32.0.responsive(context)),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.stretch,
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          Icon(
-                            Icons.router_outlined,
-                            size: 80.responsive(context),
-                            color: theme.colorScheme.primary,
-                          ),
-                          SizedBox(height: 16.responsive(context)),
-                          Text(
-                            'Plexus NOC',
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.headlineMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: theme.colorScheme.primary,
-                            ),
-                          ),
-                          SizedBox(height: 8.responsive(context)),
-                          Text(
-                            'Sign in to access the command center',
-                            textAlign: TextAlign.center,
-                            style: theme.textTheme.bodyMedium?.copyWith(
-                              color: theme.colorScheme.onSurfaceVariant,
-                            ),
-                          ),
-                          SizedBox(height: 48.responsive(context)),
+                  padding: EdgeInsets.symmetric(
+                    horizontal: 16.0.responsive(context),
+                    vertical: 24.0.responsive(context),
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(
+                        Icons.router_outlined,
+                        size: 80.responsive(context),
+                        color: theme.colorScheme.primary,
+                      ),
+                      SizedBox(height: 16.responsive(context)),
+                      Text(
+                        AppStrings.plexusNocAppTitle,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                          fontWeight: FontWeight.bold,
+                          color: theme.colorScheme.primary,
+                        ),
+                      ),
+                      SizedBox(height: 8.responsive(context)),
+                      Text(
+                        AppStrings.signInToAccessTheCommandCenter,
+                        textAlign: TextAlign.center,
+                        style: theme.textTheme.bodyMedium?.copyWith(
+                          color: theme.colorScheme.onSurfaceVariant,
+                        ),
+                      ),
+                      SizedBox(height: 32.responsive(context)),
 
-                          BlocBuilder<LoginCubit, LoginState>(
+                      // ── Form Card ──
+                      Card(
+                        margin: EdgeInsets.symmetric(
+                          horizontal: 4.responsive(context),
+                        ),
+                        child: Padding(
+                          padding: EdgeInsets.all(28.0.responsive(context)),
+                          child: BlocBuilder<LoginCubit, LoginState>(
                             builder: (context, state) {
                               String? emailError;
                               String? passwordError;
@@ -146,44 +145,71 @@ class _LoginPageState extends State<LoginPage> {
                                   ),
                                   SizedBox(height: 32.responsive(context)),
 
-                                  ElevatedButton(
-                                    onPressed: isLoading ? null : _onLoginPressed,
-                                    style: ElevatedButton.styleFrom(
-                                      backgroundColor: AppColors.accentBlue,
-                                      foregroundColor: Colors.white,
-                                      elevation: 0,
-                                      padding: EdgeInsets.symmetric(
-                                        vertical: 16.responsive(context),
-                                      ),
-                                      shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(12),
-                                      ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                      gradient: isDark
+                                          ? AppColors.primaryGradientDark
+                                          : AppColors.primaryGradientLight,
+                                      borderRadius: BorderRadius.circular(12),
+                                      boxShadow: [
+                                        BoxShadow(
+                                          color:
+                                              (isDark
+                                                      ? AppColors.primaryDark
+                                                      : AppColors.primaryLight)
+                                                  .withValues(alpha: 0.3),
+                                          blurRadius: 12,
+                                          offset: const Offset(0, 4),
+                                        ),
+                                      ],
                                     ),
-                                    child: isLoading
-                                        ? SizedBox(
-                                            height: 24.responsive(context),
-                                            width: 24.responsive(context),
-                                            child: const CircularProgressIndicator(
-                                              strokeWidth: 2,
-                                              color: Colors.white,
-                                            ),
-                                          )
-                                        : Text(
-                                            AppStrings.login,
-                                            style: TextStyle(
-                                              fontSize: 16.responsive(context),
-                                              fontWeight: FontWeight.bold,
-                                              letterSpacing: 0.5,
-                                            ),
+                                    child: ElevatedButton(
+                                      onPressed: isLoading
+                                          ? null
+                                          : _onLoginPressed,
+                                      style: ElevatedButton.styleFrom(
+                                        backgroundColor: Colors.transparent,
+                                        foregroundColor: Colors.white,
+                                        shadowColor: Colors.transparent,
+                                        elevation: 0,
+                                        padding: EdgeInsets.symmetric(
+                                          vertical: 12.responsive(context),
+                                        ),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius: BorderRadius.circular(
+                                            12,
                                           ),
+                                        ),
+                                      ),
+                                      child: isLoading
+                                          ? SizedBox(
+                                              height: 24.responsive(context),
+                                              width: 24.responsive(context),
+                                              child:
+                                                  const CircularProgressIndicator(
+                                                    strokeWidth: 2,
+                                                    color: Colors.white,
+                                                  ),
+                                            )
+                                          : Text(
+                                              AppStrings.login,
+                                              style: TextStyle(
+                                                fontSize: 16.responsive(
+                                                  context,
+                                                ),
+                                                fontWeight: FontWeight.bold,
+                                                letterSpacing: 0.5,
+                                              ),
+                                            ),
+                                    ),
                                   ),
                                 ],
                               );
                             },
                           ),
-                        ],
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
@@ -194,15 +220,20 @@ class _LoginPageState extends State<LoginPage> {
                 right: 16.responsive(context),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: isDark ? const Color(0xFF1E293B) : Colors.white,
+                    color: theme.cardColor,
                     shape: BoxShape.circle,
-                    boxShadow: [
-                      BoxShadow(
-                        color: Colors.black.withValues(alpha: 0.05),
-                        blurRadius: 10,
-                        spreadRadius: 1,
-                      )
-                    ],
+                    boxShadow: isDark
+                        ? []
+                        : [
+                            BoxShadow(
+                              color: Colors.black.withValues(alpha: 0.05),
+                              blurRadius: 10,
+                              spreadRadius: 1,
+                            ),
+                          ],
+                    border: isDark
+                        ? Border.all(color: AppColors.cardBorderDark)
+                        : null,
                   ),
                   child: IconButton(
                     onPressed: () => context.read<ThemeCubit>().toggleTheme(),
