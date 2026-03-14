@@ -27,6 +27,12 @@ class AppColors {
   static const Color warningLight = Color(0xFFFF9800);
   static const Color warningDark = Color(0xFFFFB74D);
 
+  // ── Chart Lines ────────────────────────────────────────────
+  static const Color cpuChartLight = Color(0xFF2979FF);
+  static const Color cpuChartDark = Color(0xFF448AFF);
+  static const Color memoryChartLight = Color(0xFF7C4DFF);
+  static const Color memoryChartDark = Color(0xFFB388FF);
+
   // ── Card border (dark mode) ───────────────────────────────
   static const Color cardBorderDark = Color(0xFF334155);
 }

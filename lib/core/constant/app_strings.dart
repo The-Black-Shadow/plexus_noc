@@ -57,4 +57,12 @@ class AppStrings {
   // Global Alert Dialog
   static const String criticalAlertTitle = 'Critical Alert';
   static const String alertDismiss = 'Okay';
+
+  // Device Details Page
+  static const String deviceDetailsTitle = 'Device Details';
+  static const String ipAddressLabel = 'IP Address';
+  static const String locationLabel = 'Location';
+  static const String lastPingLabel = 'Last Ping';
+  static const String cpuUsageLabel = 'CPU Usage';
+  static const String memoryUsageLabel = 'Memory Usage';
 }
